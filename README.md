@@ -14,7 +14,7 @@ Recognize squares and circles (pattern recog.)
 ## phase 3
 OCR
 
-sources:
+sources: 
 
 * http://en.wikipedia.org/wiki/Perceptron
 * http://en.wikibooks.org/wiki/Artificial_Neural_Networks/Print_Version
