@@ -1,6 +1,7 @@
-# Hanoi
+![alt tag](https://raw.githubusercontent.com/mdvanes/Hanoi/master/logo_small.png)
+--
 
-JS ANN
+A Javascript Artificial Neural Network
 
 ## fase 1
 arithmatics?
