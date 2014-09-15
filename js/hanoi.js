@@ -1,4 +1,38 @@
 (function() {
+    var ImgData = function(img) {
+        // Create canvas
+        $('body')
+            .remove('#dummyCanvas')
+            .append('<canvas id="dummyCanvas"></canvas>');
+        var $dummyCanvas = $('#dummyCanvas', this.$elem);
+        // Canvas dimensions should match image dimensions
+        $dummyCanvas
+            .attr('height', img.height)
+            .attr('width', img.width);
+        var context = $dummyCanvas[0].getContext('2d');
+        context.drawImage(img, 0, 0);
+        this.imgData = context.getImageData(0, 0,
+            context.canvas.width,
+            context.canvas.height);
+        //getCanvasImgData(context);
+    };
+
+    ImgData.prototype.log = function() {
+        // first pixel is first 4 entries (rgba)
+        var data = this.imgData.data;
+        console.log('The image data array has ' +
+            this.imgData.data.length + ' entries\n' +
+            'i.e. ' + (this.imgData.data.length / 4) + ' pixels (' +
+            this.imgData.width + 'x' + this.imgData.height + ')\n' +
+            'and the value of the first pixel is rgba(' +
+            data[0] + ',' +
+            data[1] + ',' +
+            data[2] + ',' +
+            data[3] + ')');
+            // TODO log first 4 pixels
+        //imageData.data type is CanvasPixelArray  4*width*height
+    };
+
     /* #reader Object start */
     var Reader = function($elem) {
         this.$elem = $elem;
@@ -25,23 +59,12 @@
                     file.name + '.');
                 }
             });
-            // if(isImage(file)) {
-            //     self.processImage(file);
-            // } else {
-            //     alert('You need to select a PNG image.');
-            // }
         });
     };
 
     Reader.prototype.processImage = function(image) {
         this.previewImage(image);
         this.readImageBinary(image);
-
-        // var reader = new FileReader();
-        // reader.onload = function() {
-        //     console.log(reader.result);
-        // };
-        // reader.readAsBinaryString(image);
     };
 
     Reader.prototype.previewImage = function(image) {
@@ -62,75 +85,29 @@
     };
 
     Reader.prototype.readImageBinary = function(image) {
-        var bin;
-        //var reader = new FileReader();
+        var self = this;
 
-        // create canvas
-        this.$elem.append('<canvas id="dummyCanvas"></canvas>');
-        var $dummyCanvas = $('#dummyCanvas', this.$elem);
-        var context = $dummyCanvas[0].getContext('2d');
-
-        // Inject dataURL into canvas
         var reader = new FileReader();
         reader.onload = function() {
             var img = new Image();
-            img.onload = function() {
-                context.drawImage(this, 0, 0);
-                getCanvasImgData(context);
-            };
+            // Inject dataURL into canvas
             img.src = reader.result;
-            //console.info(img);
-            //console.info(context);
+            img.onload = function() {
+                var imgData = new ImgData(this);
+                imgData.log();
+            };
         };
         reader.readAsDataURL(image);
-// function loadCanvas(dataURL) {
-//         var canvas = document.getElementById('myCanvas');
-//         var context = canvas.getContext('2d');
-//
-//         // load image from data url
-//         var imageObj = new Image();
-//         imageObj.onload = function() {
-//           context.drawImage(this, 0, 0);
-//         };
-//
-//         imageObj.src = dataURL;
-//       }
-        // Convert canvas to width,height,binary
-        // context.getImageData(left, top, width, height);
-
-        // reader.onloadend = function() {
-        //     //console.log(reader.result);
-        //     bin = reader.result;
-        //     console.log('binary of ' + image.name, bin);
-        // };
-        // // https://developer.mozilla.org/en-US/docs/Web/API/FileReader.readAsBinaryString
+        // https://developer.mozilla.org/en-US/docs/Web/API/FileReader.readAsBinaryString
         // reader.readAsBinaryString(image);
     };
     /* #reader Object end */
-
-    var getCanvasImgData = function(context) {
-        // Convert canvas to width,height,binary
-        var imageData = context.getImageData(0, 0,
-            context.canvas.width,
-            context.canvas.height);
-        console.log(imageData.data.length);
-        // first pixel is first 4 entries (rgba)
-        var data = imageData.data;
-        console.log('pixel 1 rgba(' +
-        data[0] + ',' +
-        data[1] + ',' +
-        data[2] + ',' +
-        data[3] + ')');
-        //imageData.data type is CanvasPixelArray  4*width*height
-    };
 
     var isImage = function(file) {
         return file.type === 'image/png';
     };
 
     $(document).ready(function() {
-        //console.log($('#main').text());
-        //bindFileInput($('.reader'));
         new Reader($('.reader'));
     });
 })();
