@@ -1,0 +1,31 @@
+.distribution {
+    text-align: center;
+}
+#colorDominance {
+    background-color: #fff;
+    height: 100px;
+    margin: 0 auto;
+    position: relative;
+    width: 200px;
+
+    & > div {
+        bottom: 0;
+        position: absolute;
+        width: 25%;
+    }
+    .red {
+        background-color: #d73838;
+    }
+    .green {
+        background-color: #38d774;
+        left: 25%;
+    }
+    .blue {
+        background-color: #384bd7;
+        left: 50%;
+    }
+    .neither {
+        background-color: #ccc;
+        left: 75%;
+    }
+}

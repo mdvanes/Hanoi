@@ -1,0 +1,71 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/personal\/hanoi\/Hanoi\/sass\/styles\.scss}line{font-family:\000031}}
+html, body {
+  height: 100%;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/personal\/hanoi\/Hanoi\/sass\/styles\.scss}line{font-family:\000034}}
+.main-container {
+  background: #fafafa;
+  height: 100%;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/personal\/hanoi\/Hanoi\/sass\/styles\.scss}line{font-family:\000039}}
+.preview-image {
+  border: 1px solid black;
+  border-radius: 3px;
+  height: 100px;
+  margin: 0 10px 10px 0;
+  padding: 5px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/personal\/hanoi\/Hanoi\/sass\/styles\.scss}line{font-family:\0000317}}
+#dummyCanvas {
+  display: none;
+  border: 2px dotted #ccc;
+  left: 0;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/personal\/hanoi\/Hanoi\/sass\/_stats-distribution\.scss}line{font-family:\000031}}
+.distribution {
+  text-align: center;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/personal\/hanoi\/Hanoi\/sass\/_stats-distribution\.scss}line{font-family:\000034}}
+#colorDominance {
+  background-color: #fff;
+  height: 100px;
+  margin: 0 auto;
+  position: relative;
+  width: 200px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/personal\/hanoi\/Hanoi\/sass\/_stats-distribution\.scss}line{font-family:\0000311}}
+#colorDominance > div {
+  bottom: 0;
+  position: absolute;
+  width: 25%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/personal\/hanoi\/Hanoi\/sass\/_stats-distribution\.scss}line{font-family:\0000316}}
+#colorDominance .red {
+  background-color: #d73838;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/personal\/hanoi\/Hanoi\/sass\/_stats-distribution\.scss}line{font-family:\0000319}}
+#colorDominance .green {
+  background-color: #38d774;
+  left: 25%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/personal\/hanoi\/Hanoi\/sass\/_stats-distribution\.scss}line{font-family:\0000323}}
+#colorDominance .blue {
+  background-color: #384bd7;
+  left: 50%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/personal\/hanoi\/Hanoi\/sass\/_stats-distribution\.scss}line{font-family:\0000327}}
+#colorDominance .neither {
+  background-color: #ccc;
+  left: 75%;
+}
+
+/*# sourceMappingURL=styles.css.map */
