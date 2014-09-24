@@ -42,6 +42,7 @@
     };
 
     ImgData.prototype.calculateColorDominance = function() {
+        var startTime = (new Date()).getTime();
         // Color dominance RGB
         var result = [0, 0, 0, 0]; // [R, G, B, neither]
         var data = this.imgData.data;
@@ -64,6 +65,8 @@
                 result[3] = result[3] + 1;
             }
         }
+        var endTime = (new Date()).getTime();
+        console.info('color distribution processing time is ' + ((endTime - startTime)/1000) + ' seconds');
         return result;
     };
 
@@ -106,14 +109,17 @@
     Reader.prototype.bindFileInput = function() {
         var self = this;
         self.$input.change(function() {
+            var startTime = (new Date()).getTime();
             //var file = $(this)[0].files[0];
             self.$preview.empty();
             $.each($(this)[0].files, function(index, file) {
                 if(isImage(file)) {
                     self.processImage(file);
+                    var endTime = (new Date()).getTime();
+                    console.info('processing time is ' + ((endTime - startTime)/1000) + ' seconds');
                 } else {
                     alert('You need to select a PNG image for ' +
-                    file.name + '.');
+                        file.name + '.');
                 }
             });
         });
